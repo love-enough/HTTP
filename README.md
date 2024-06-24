@@ -1,5 +1,3 @@
-[TOC]
-
 # 项目地址
 
 从0到1实现HTTP高性能服务器：[love-enough/HTTP at master (github.com)](https://github.com/love-enough/HTTP/tree/master)
