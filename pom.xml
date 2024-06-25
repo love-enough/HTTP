@@ -14,4 +14,19 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <!-- 添加Lombok依赖 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version> <!-- 使用最新的版本 -->
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.bladejava</groupId>
+            <artifactId>blade-kit</artifactId>
+            <version>1.2.8-alpha</version>
+        </dependency>
+    </dependencies>
+
 </project>

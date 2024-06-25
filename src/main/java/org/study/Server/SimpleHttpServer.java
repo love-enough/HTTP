@@ -1,6 +1,7 @@
 package org.study.Server;
 
 import org.study.Server.handler.HttpRequestHandler;
+import org.study.Server.handler.impl.RequestHandlerImpl;
 
 import java.io.File;
 import java.net.ServerSocket;
@@ -16,7 +17,7 @@ public class SimpleHttpServer {
     /**
      * SimpleHttpServer 的根路径
      */
-    private String basePath;
+    private String rootPath;
 
     /**
      * 服务监听端口
@@ -24,7 +25,7 @@ public class SimpleHttpServer {
     private int port = 8080;
 
     public void start() throws Exception {
-        System.out.println("start at " + port + ", basePath: " + this.basePath);
+        System.out.println("start at " + port + ", rootPath: " + this.rootPath);
 
         // serverSocket 接受客户端的请求
         ServerSocket serverSocket = new ServerSocket(port);
@@ -36,15 +37,15 @@ public class SimpleHttpServer {
             /**
              * 接收一个客户端Socket，生成一个HttpRequestHandler，放入线程池队列
              */
-            executor.execute(new HttpRequestHandler(socket, this.basePath));
+            executor.execute(new RequestHandlerImpl(this.rootPath, socket));
         }
         serverSocket.close();
     }
 
-    public void setBasePath(String basePath) {
-        if (basePath != null && new File(basePath).exists() &&
-                new File(basePath).isDirectory()) {
-            this.basePath = basePath;
+    public void setRootPath(String rootPath) {
+        if (rootPath != null && new File(rootPath).exists() &&
+                new File(rootPath).isDirectory()) {
+            this.rootPath = rootPath;
         }
     }
 
